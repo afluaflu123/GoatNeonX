@@ -32,7 +32,7 @@ async def start(client, message):
         kd = await message.reply_photo(
         photo=random.choice(PICS),
         caption=script.START_TXT.format(message.from_user.mention if message.from_user else message.chat.title, temp.U_NAME, temp.B_NAME), reply_markup=reply_markup)
-        await asyncio.sleep(20)
+        await asyncio.sleep(10)
         await kd.delete()
         await message.delete()
 
