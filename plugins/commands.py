@@ -136,7 +136,7 @@ async def start(client, message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                          [
-                          InlineKeyboardButton("💌 sᴜʙsᴄʀɪʙᴇ ʏᴏᴜᴛᴜʙᴇ ᴄʜᴀɴɴᴇʟ 💌", url="https://www.youtube.com/@FoxMoviesHub")
+                          InlineKeyboardButton("💌 sᴜʙsᴄʀɪʙᴇ ᴄʜᴀɴɴᴇʟ 💌", url="https://www.youtube.com/@FoxMoviesHub")
                        ],[
                           InlineKeyboardButton('⚠️ Dᴇʟᴇᴛᴇ Fɪʟᴇ ⚠️', callback_data='close_data')
                          ]
@@ -154,7 +154,7 @@ async def start(client, message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                          [
-                          InlineKeyboardButton("💌 sᴜʙsᴄʀɪʙᴇ ʏᴏᴜᴛᴜʙᴇ ᴄʜᴀɴɴᴇʟ 💌", url="https://www.youtube.com/@FoxMoviesHub")                          
+                          InlineKeyboardButton("💌 sᴜʙsᴄʀɪʙᴇ ᴄʜᴀɴɴᴇʟ 💌", url="https://www.youtube.com/@FoxMoviesHub")                          
                        ],[
                           InlineKeyboardButton('⚠️ Dᴇʟᴇᴛᴇ Fɪʟᴇ ⚠️', callback_data='close_data')
                          ]
@@ -224,7 +224,7 @@ async def start(client, message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                      [
-                      InlineKeyboardButton("💌 sᴜʙsᴄʀɪʙᴇ ʏᴏᴜᴛᴜʙᴇ ᴄʜᴀɴɴᴇʟ 💌", url="https://www.youtube.com/@FoxMoviesHub")
+                      InlineKeyboardButton("💌 sᴜʙsᴄʀɪʙᴇ ᴄʜᴀɴɴᴇʟ 💌", url="https://www.youtube.com/@FoxMoviesHub")
                    ],[
                       InlineKeyboardButton('⚠️ Dᴇʟᴇᴛᴇ Fɪʟᴇ ⚠️', callback_data='close_data')
                      ]
@@ -247,7 +247,7 @@ async def start(client, message):
             pass
         return await message.reply('No such file exist.')
     files = files_[0]
-    title = files.file_name
+    title = '@Team_KL' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))
     size=get_size(files.file_size)
     f_caption=files.caption
     if CUSTOM_FILE_CAPTION:
@@ -258,7 +258,7 @@ async def start(client, message):
             f_caption=f_caption
     if f_caption is None:
         f_caption = f"{files.file_name}"
-    await client.send_cached_media(
+    msg = await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
         caption=f_caption,
@@ -266,13 +266,20 @@ async def start(client, message):
         reply_markup=InlineKeyboardMarkup(
             [
              [
-              InlineKeyboardButton("💌 sᴜʙsᴄʀɪʙᴇ ʏᴏᴜᴛᴜʙᴇ ᴄʜᴀɴɴᴇʟ 💌", url="https://www.youtube.com/@FoxMoviesHub")
-           ],[
-              InlineKeyboardButton('⚠️ Dᴇʟᴇᴛᴇ Fɪʟᴇ ⚠️', callback_data='close_data')
+              InlineKeyboardButton("♽ Mᴏᴠɪᴇ Rᴇᴏ̨ᴜᴇsᴛ Cʜᴀɴɴᴇʟ ♽", url="t.me/+EH_DIgq7EcM1ZTQ9")
              ]
             ]
         )
-    )                          
+    )
+    btn = [[
+        InlineKeyboardButton('⚠️ Dᴇʟᴇᴛᴇ Fɪʟᴇ ⚠️', callback_data='close_data')
+    ]]    
+    k = await msg.reply("<b><u>❗️❗️IMPORTANT❗️️❗️</u>\n\n⚠️ This File Will Be Deleted From Here Within <u>10 Minute</u> As It Has (Due To Copyright Issues) ...!\n\nPlease Forward This File To Your Saved Messages And Start Download There ☺️.</b>",quote=True)
+    await asyncio.sleep(200)
+    await msg.delete()
+    await k.edit_text("<b><i>• ʏᴏᴜʀ ꜰɪʟᴇ ɪs sᴜᴄᴄᴇssꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ.</i></b>",reply_markup=InlineKeyboardMarkup(btn))
+    await message.delete()
+    return 
 
 @Client.on_message(filters.command('channel') & filters.user(ADMINS))
 async def channel_info(bot, message):
