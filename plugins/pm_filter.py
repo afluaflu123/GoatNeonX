@@ -38,6 +38,7 @@ logger.setLevel(logging.ERROR)
 import datetime
 import calendar
 import pytz
+import time
 time_zone = pytz.timezone('Asia/Kolkata')
 current_datetime = datetime.datetime.now(time_zone)
 current_date = current_datetime.strftime('%d-%m-%Y')
@@ -181,19 +182,11 @@ async def next_page(bot, query):
         ]
     btn.insert(0, 
         [
-            InlineKeyboardButton(f"♀️ {search}", "dupe"),
-            InlineKeyboardButton(f"🗂️ Fɪʟᴇs: {len(files)}", "dupe")       
+            InlineKeyboardButton(f'⎙ Fɪʟᴇs: {total}', 'dupe'),
+            InlineKeyboardButton(f'⟮ Iɴꜰᴏ ⟯', 'reqinfo')       
         ]
     )
-    btn.insert(1, 
-         [
-             InlineKeyboardButton(f'Iɴꜰᴏ', 'reqinfo'),
-             InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'finfo'),
-             InlineKeyboardButton(f'Sᴇʀɪᴇs', 'sinfo'),
-             InlineKeyboardButton(f'Tɪᴘs', 'tinfo')
-         ]
-    )
-
+    
     if 0 < offset <= 10:
         off_set = 0
     elif offset == 0:
@@ -558,7 +551,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         btn = [[
         InlineKeyboardButton('⚠️ Dᴇʟᴇᴛᴇ Fɪʟᴇ ⚠️', callback_data='close_data')
         ]]    
-        k = await msg.reply("<b><u>❗️❗️IMPORTANT❗️️❗️</u>\n\n⚠️ This File Will Be Deleted From Here Within <u>10 Minute</u> As It Has (Due To Copyright Issues) ...!\n\nPlease Forward This File To Your Saved Messages And Start Download There ☺️.</b>",quote=True)
+        k = await msg.reply("<b><u>❗️❗️IMPORTANT❗️️❗️</u>\n\n⚠️ This File Will Be Deleted From Here Within <u>10 Minute</u>...!\n\nPlease Forward This File To Your Saved Messages And Start Download There ☺️.</b>",quote=True)
         await asyncio.sleep(200)
         await msg.delete()
         await k.edit_text("<b><i>• ʏᴏᴜʀ ꜰɪʟᴇ ɪs sᴜᴄᴄᴇssꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ.</i></b>",reply_markup=InlineKeyboardMarkup(btn))
@@ -593,24 +586,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "pages":
         await query.answer()
 
+    elif query.data == "neosub": 
+        await query.answer(f"✯ താഴെയുള്ള ബട്ടണിൽ വേണ്ട ക്വാളിറ്റി യിൽ ക്ലിക്ക് ചെയ്താൽ കിട്ടും⚡\n\n✯ 𝖢𝗅𝗂𝖼𝗄 𝗈𝗇 𝗍𝗁𝖾 𝗙𝗶𝗹𝗲 𝗡𝗮𝗺𝗲 𝖻𝖾𝗅𝗈𝗐 𝖻𝗎𝗍𝗍𝗈𝗇 𝖠𝗇𝖽 𝖲𝗍𝖺𝗋𝗍 𝖳𝗁𝖾 𝖡𝗈𝗍 🎯 \n\n➠ © @Team_KL",show_alert=True)
+
     elif query.data == "reqinfo":
-        await query.answer("⚠ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ⚠\n\nᴀꜰᴛᴇʀ 10 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ\n\nɪꜰ ʏᴏᴜ ᴅᴏ ɴᴏᴛ ꜱᴇᴇ ᴛʜᴇ ʀᴇǫᴜᴇsᴛᴇᴅ ᴍᴏᴠɪᴇ / sᴇʀɪᴇs ꜰɪʟᴇ, ʟᴏᴏᴋ ᴀᴛ ᴛʜᴇ ɴᴇxᴛ ᴘᴀɢᴇ\n\n© Team_KL", show_alert=True)
-
-    elif query.data == "finfo":
-        await query.answer("⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\nᴍᴏᴠɪᴇ ʀᴇǫᴜᴇꜱᴛ ꜰᴏʀᴍᴀᴛ\n⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\n\nɢᴏ ᴛᴏ ɢᴏᴏɢʟᴇ ➠ ᴛʏᴘᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ➠ ᴄᴏᴘʏ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ➠ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ\n\nᴇxᴀᴍᴘʟᴇ : ᴀᴠᴀᴛᴀʀ: ᴛʜᴇ ᴡᴀʏ ᴏғ ᴡᴀᴛᴇʀ\n\n🚯 ᴅᴏɴᴛ ᴜꜱᴇ ➠ ':(!,./)\n\n© Team_KL", show_alert=True)
-
-    elif query.data == "sinfo":
-        await query.answer("⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\nꜱᴇʀɪᴇꜱ ʀᴇǫᴜᴇꜱᴛ ꜰᴏʀᴍᴀᴛ\n⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\n\nɢᴏ ᴛᴏ ɢᴏᴏɢʟᴇ ➠ ᴛʏᴘᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ➠ ᴄᴏᴘʏ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ➠ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ\n\nᴇxᴀᴍᴘʟᴇ : ᴍᴏɴᴇʏ ʜᴇɪsᴛ S01E01\n\n🚯 ᴅᴏɴᴛ ᴜꜱᴇ ➠ ':(!,./)\n\n© Team_KL", show_alert=True)      
+        await query.answer("✯ Movies - Jailer 2023\n✯ Series - Dark S01E01\n\n✯ Correct Spelling in English Letters Only And ❌ Don't Use Stylish Font\n\n✯ Not Available Theater Print Files !\n\n ➠ © @Team_KL", show_alert=True)
 
     elif query.data == "rendering_info":
         await query.answer(text=script.RENDERING_TXT, show_alert=True)
     
-    elif query.data == "fmod":
-        await query.answer(text="𝙲𝚘𝚖𝚒𝚗𝚐 𝚜𝚘𝚘𝚗... 😊", show_alert=True)
-
-    elif query.data == "tinfo":
-        await query.answer("▣ ᴛɪᴘs ▣\n\n★ ᴛʏᴘᴇ ᴄᴏʀʀᴇᴄᴛ sᴘᴇʟʟɪɴɢ (ɢᴏᴏɢʟᴇ)\n\n★ ɪғ ʏᴏᴜ ɴᴏᴛ ɢᴇᴛ ʏᴏᴜʀ ғɪʟᴇ ɪɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ᴛʜᴇɴ ᴛʜᴇ ɴᴇxᴛ sᴛᴇᴘ ɪs ᴄʟɪᴄᴋ ɴᴇxᴛ ʙᴜᴛᴛᴏɴ.\n\n★ ᴄᴏɴᴛɪɴᴜᴇ ᴛʜɪs ᴍᴇᴛʜᴏᴅ ᴛᴏ ɢᴇᴛᴛɪɴɢ ʏᴏᴜ ғɪʟᴇ\n\n\© Team_KL", show_alert=True)
-
+    elif query.data == "whyjoin":
+        await query.answer(text="⚠ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ⚠\n\nIғ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴄᴏᴘʏ ʀɪɢʜᴛ ɪꜱ ʟᴏꜱᴛ , ᴡʜᴇɴ ᴀ ɴᴇᴡ ᴄʜᴀɴɴᴇʟ ɪꜱ ꜱᴛᴀʀᴛᴇᴅ, ɪᴛ ᴡɪʟʟ ʙᴇ ɴᴏᴛɪғɪᴇᴅ ᴏɴ ᴛʜɪꜱ ᴄʜᴀɴɴᴇʟ 🙂", show_alert=True)
+    
     elif query.data == "start":
         buttons = [[
             InlineKeyboardButton('⚚ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ⚚', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
@@ -1258,19 +1245,11 @@ async def auto_filter(client, msg, spoll=False):
         ]
     btn.insert(0, 
         [
-            InlineKeyboardButton(f"♀️ {search}", "dupe"),
-            InlineKeyboardButton(f"🗂️ Fɪʟᴇs: {len(files)}", "dupe")       
+            InlineKeyboardButton(f"⇓ {search} ⇓", "neosub"),
+            InlineKeyboardButton(f"⟮ Iɴꜰᴏ ⟯", "reqinfo")       
         ]
     )
-    btn.insert(1, 
-         [
-             InlineKeyboardButton(f'Iɴꜰᴏ', 'reqinfo'),
-             InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'finfo'),
-             InlineKeyboardButton(f'Sᴇʀɪᴇs', 'sinfo'),
-             InlineKeyboardButton(f'Tɪᴘs', 'tinfo')
-         ]
-    )
-
+   
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
         BUTTONS[key] = search
@@ -1315,10 +1294,12 @@ async def auto_filter(client, msg, spoll=False):
             plot=imdb['plot'],
             rating=imdb['rating'],
             url=imdb['url'],
-            **locals()
+            current_date=current_date,
+            current_time=current_time,
+            current_day=current_day
         )
     else:
-        cap = f"┏⍞ Tɪᴛɪʟᴇ :{search}\n┣❐  Rᴇǫᴜᴇsᴛᴇᴅ Bʏ : {message.from_user.mention}\n┣⎙ Fɪʟᴇs : {total_results}\n┗〄 Gʀᴏᴜᴘ :  {message.chat.title}\n\nᴀꜰᴛᴇʀ 10 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ."
+        cap = f"<b>┏ ⍞ Tɪᴛɪʟᴇ : {search}\n┣ ❐ ᴀsᴋᴇᴅ ʙʏ : {message.from_user.mention}\n┣ 〄 ᴘᴏᴡᴇʀᴇᴅ ʙʏ : [Nᴀɴᴄʏ](https://t.me/Oru_adaar_Robot)\n┗ ⌬ ᴄʜᴀɴɴᴇʟ : [ᴋᴇʀᴀʟᴀ ʀᴏᴄᴋᴇʀs](https://t.me/KLMovieGroup)\n\n⛯ ᴛɪᴍᴇ : {current_time}\n⟁ ᴅᴀᴛᴇ : {current_date}\n\n<i>ᴀꜰᴛᴇʀ 10 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ.</i></b>"
     if imdb and imdb.get('poster'):
         try:
             pic_fi=await message.reply_photo(photo='https://telegra.ph/file/60d2e897bfdf063f81545.jpg', caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
