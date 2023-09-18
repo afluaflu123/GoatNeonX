@@ -347,15 +347,12 @@ Name - {}
 ✵ QᴜAʟIᴛY : HDRip,WEB-DL
 〄 GʀOᴜP : {message.chat.title}</b>"""
 
-    CUSTOM_FILE_CAPTION = """<b>🗂️ Fɪʟᴇ Nᴀᴍᴇ :- <code>{file_name}</code>
+    CUSTOM_FILE_CAPTION = """<b>⋟ Fɪʟᴇ Nᴀᴍᴇ :- {file_name}
 
-♀️ Fɪʟᴇ Sɪᴢᴇ :- {file_size}
+⋟ Fɪʟᴇ Sɪᴢᴇ :- {file_size}
 
-💥 ᴄʜᴀɴɴᴇʟ :- @Team_KL
-
- 🍿 ᴊᴏɪɴ ᴏᴜʀ ɢʀᴏᴜᴘ 🍿
-
-@KLMovieGroup | @KL_Group2</b>"""
+⋟ @KLMovieGroup       
+⋟ @KL_Group2</b>"""
 
     RESTART_TXT = """
 <b>Bᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ !
