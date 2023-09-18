@@ -48,7 +48,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', 'None')
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', False))
 PICS = (environ.get('PICS', 'https://telegra.ph/file/35fc08358edc12cc1e21e.jpg')).split()
-NOR_IMG = environ.get('NOR_IMG', 'https://telegra.ph/file/c27901b78e7c1b95740d6.jpg')
+NOR_IMG = environ.get('NOR_IMG', 'https://telegra.ph/file/890be6028de4a061e098d.jpg')
 SPELL_IMG = environ.get('SPELL_IMG',"https://graph.org/file/cd9d7825d4c11195c19df.jpg")
 
 # Welcome area
@@ -103,7 +103,7 @@ SPELL_CHECK_REPLY = is_enabled(environ.get("SPELL_CHECK_REPLY", "True"), True)
 MAX_LIST_ELM = environ.get("MAX_LIST_ELM", None)
 INDEX_REQ_CHANNEL = int(environ.get('INDEX_REQ_CHANNEL', LOG_CHANNEL))
 FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '')).split()]
-MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), True)
+MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "False")), False)
 PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
 
