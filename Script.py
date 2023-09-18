@@ -285,13 +285,11 @@ This module only works for my admins
 • /deletefiles - <code>Delete CamRip and PreDvD files delete from database </code>"""
 
 
-    STATUS_TXT = """<b>── • ❰ 📂 Bot DB Status 📂❱ • ──
-
-📑 Fɪʟᴇs Sᴀᴠᴇᴅ: <code>{}</code>
-👤 Tᴏᴛᴀʟ Usᴇʀs: <code>{}</code>
-♻️ Tᴏᴛᴀʟ Cʜᴀᴛs: <code>{}</code>
-🗃️ Usᴇᴅ Sᴛᴏʀᴀɢᴇ: <code>{}</code> 𝙼𝚒𝙱
-🆓 Fʀᴇᴇ Sᴛᴏʀᴀɢᴇ: <code>{}</code> 𝙼𝚒𝙱</b>"""
+    STATUS_TXT = """<b>⎇ Fɪʟᴇs Sᴀᴠᴇᴅ: <code>{}</code>
+⎇ Tᴏᴛᴀʟ Usᴇʀs: <code>{}</code>
+⎇ Tᴏᴛᴀʟ Cʜᴀᴛs: <code>{}</code>
+⎇ Usᴇᴅ Sᴛᴏʀᴀɢᴇ: <code>{}</code> MiB
+⎇ Fʀᴇᴇ Sᴛᴏʀᴀɢᴇ: <code>{}</code> MiB</b>"""
 
 
     CARB_TXT = """<b>Help</b> : 𝗖𝗔𝗥𝗕𝗢𝗡
@@ -340,12 +338,14 @@ Name - {}
 
     IMDB_TEMPLATE_TXT = """
 <b>⍞ TɪᴛLᴇ : {title}
-⌬ YᴇAʀ : {release_date}
-⎙ LᴀNɢUᴀGᴇ : {languages}
-★ RᴀTɪNɢ : {rating} / 10.0
-⌗ GᴇNʀEs : {genres}
-✵ QᴜAʟIᴛY : HDRip,WEB-DL
-〄 GʀOᴜP : {message.chat.title}</b>"""
+⌬ YᴇAʀ : {year}
+✇ LᴀNɢUᴀGᴇ : {languages}
+⛦ RᴀTɪNɢ : {rating} / 10.0
+〄 QᴜAʟIᴛY : HDRip
+╭───────────────╮
+  ⛯ TɪᴍMᴇ : {current_time} 
+  ⟁ DᴀTᴇ : {current_date}   
+╰───────────────╯</b>"""
 
     CUSTOM_FILE_CAPTION = """<b>⋟ Fɪʟᴇ Nᴀᴍᴇ :- {file_name}
 
