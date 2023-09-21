@@ -1441,7 +1441,6 @@ async def advantage_spell_chok(client, msg):
     try:
         if settings['auto_delete']:
             await asyncio.sleep(60)
-            await msg.delete()
             await spell_check_del.delete()
     except KeyError:
             grpid = await active_connection(str(message.from_user.id))
@@ -1449,7 +1448,6 @@ async def advantage_spell_chok(client, msg):
             settings = await get_settings(message.chat.id)
             if settings['auto_delete']:
                 await asyncio.sleep(60)
-                await msg.delete()
                 await spell_check_del.delete()
 
 async def manual_filters(client, message, text=False):
