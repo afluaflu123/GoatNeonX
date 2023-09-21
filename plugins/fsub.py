@@ -124,6 +124,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
             )
             await asyncio.sleep(100)
             await msg.delete()
+            await update.delete()
         return False
 
     except FloodWait as e:
