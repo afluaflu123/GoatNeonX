@@ -4,6 +4,8 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, Media
 from info import IMDB_TEMPLATE
 from utils import extract_user, get_file_id, get_poster, last_online
 import time
+import calendar
+import pytz
 from datetime import datetime
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 import logging
@@ -161,6 +163,11 @@ async def imdb_callback(bot: Client, quer_y: CallbackQuery):
             ]
         ]
     message = quer_y.message.reply_to_message or quer_y.message
+    time_zone = pytz.timezone('Asia/Kolkata')
+    current_datetime = datetime.datetime.now(time_zone)
+    current_date = current_datetime.strftime('%d-%m-%Y')
+    current_time = current_datetime.strftime('%I:%M:%S %p')
+    current_day = calendar.day_name[current_datetime.weekday()]
     if imdb:
         caption = IMDB_TEMPLATE.format(
             query = imdb['title'],
@@ -191,7 +198,9 @@ async def imdb_callback(bot: Client, quer_y: CallbackQuery):
             plot = imdb['plot'],
             rating = imdb['rating'],
             url = imdb['url'],
-            **locals()
+            current_date=current_date,
+            current_time=current_time,
+            current_day=current_day
         )
     else:
         caption = "No Results"
