@@ -226,12 +226,8 @@ async def advantage_spoll_choker(bot, query):
     if movie_ == "close_spellcheck":
         return await query.message.delete()
     movie = movies[(int(movie_))]
-    movie = re.sub(r"[:\-]", " ", movie)
-    movie = re.sub(r"\s+", " ", movie).strip()
-    z=await query.message.edit(text=script.TOP_ALRT_MSG)
-    await asyncio.sleep(2)
-    await z.delete()
-    k = await manual_filters(bot, query.message, text=movie)
+    await query.answer(script.TOP_ALRT_MSG)
+    k = await manual_filters(bot, query.message, text=movie
     if k == False:
         files, offset, total_results = await get_search_results(movie, offset=0, filter=True)
         if files:
@@ -242,7 +238,7 @@ async def advantage_spoll_choker(bot, query):
             reqstr = await bot.get_users(reqstr1)
             await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, movie)))
             k = await query.message.edit(script.MVE_NT_FND)
-            await asyncio.sleep(8)            
+            await asyncio.sleep(7)            
             await k.delete()
             await query.message.delete()
 
@@ -1399,7 +1395,7 @@ async def advantage_spell_chok(client, msg):
             reply_markup=InlineKeyboardMarkup(button),
             reply_to_message_id=msg.id
         )
-        await asyncio.sleep(40)
+        await asyncio.sleep(10)
         await msg.delete()
         await k.delete()      
         return
@@ -1417,7 +1413,7 @@ async def advantage_spell_chok(client, msg):
             reply_markup=InlineKeyboardMarkup(button),
             reply_to_message_id=msg.id
         )
-        await asyncio.sleep(40)
+        await asyncio.sleep(10)
         await msg.delete()
         await k.delete()       
         return
@@ -1440,14 +1436,14 @@ async def advantage_spell_chok(client, msg):
     )
     try:
         if settings['auto_delete']:
-            await asyncio.sleep(60)
+            await asyncio.sleep(10)
             await spell_check_del.delete()
     except KeyError:
             grpid = await active_connection(str(message.from_user.id))
             await save_group_settings(grpid, 'auto_delete', True)
             settings = await get_settings(message.chat.id)
             if settings['auto_delete']:
-                await asyncio.sleep(60)
+                await asyncio.sleep(10)
                 await spell_check_del.delete()
 
 async def manual_filters(client, message, text=False):
