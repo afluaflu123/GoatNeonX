@@ -633,7 +633,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         if query.from_user.id in ADMINS:
-        await query.message.edit_text(                     
+            await query.message.edit_text(                     
             text=script.HELPER_TXT.format(query.from_user.mention), reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
         else:
             await query.answer("Cᴏᴍɪɴɢ Sᴏᴏɴ... 🌜", show_alert=True)
