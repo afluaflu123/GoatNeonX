@@ -347,7 +347,7 @@ Name - {}
   ⟁ DᴀTᴇ : {current_date}   
 ╰───────────────╯</b>"""
 
-    CUSTOM_FILE_CAPTION = """<b>⋟ Fɪʟᴇ Nᴀᴍᴇ :- {file_name}
+    CUSTOM_FILE_CAPTION = """<b>⋟ Fɪʟᴇ Nᴀᴍᴇ :- <code>{file_name}</code>
 
 ⋟ Fɪʟᴇ Sɪᴢᴇ :- {file_size}
 
