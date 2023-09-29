@@ -525,7 +525,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 logger.exception(e)
                 f_caption = f_caption
         if f_caption is None:
-            f_caption = f"{title}"
+            f_caption = f"{title}"   
         await query.answer()
         msg = await client.send_cached_media(
             chat_id=query.from_user.id,
@@ -541,40 +541,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
         ) 
         btn = [[
-        InlineKeyboardButton('⚠️ Dᴇʟᴇᴛᴇ Fɪʟᴇ ⚠️', callback_data='close_data')
+        InlineKeyboardButton('⚠️ Dᴇʟᴇᴛᴇ Mᴇssᴀɢᴇ ⚠️', callback_data='close_data')
         ]]    
-        k = await msg.reply("<b><u>❗️❗️IMPORTANT❗️️❗️</u>\n\n⚠️ This File Will Be Deleted From Here Within <u>10 Minute</u>...!\n\nPlease Forward This File To Your Saved Messages And Start Download There ☺️.</b>",quote=True)
-        await asyncio.sleep(200)
+        k = await msg.reply("<b><u>❗️❗️IMPORTANT❗️️❗️</u>\n\n⚠️ This File Will Be Deleted From Here Within <u>10 Minute</u>\n\nPlease Forward This File To Your Saved Messages And Start Download There ☺️.</b>",quote=True)
+        await asyncio.sleep(50)
         await msg.delete()
         await k.edit_text("<b><i>• ʏᴏᴜʀ ꜰɪʟᴇ ɪs sᴜᴄᴄᴇssꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ.</i></b>",reply_markup=InlineKeyboardMarkup(btn))
-        return
-        
-    elif query.data.startswith("killfilesdq"):
-        ident, keyword = query.data.split("#")
-        await query.message.edit_text(f"<b>Fᴇᴛᴄʜɪɴɢ Fɪʟᴇs ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {keyword} ᴏɴ DB... Pʟᴇᴀsᴇ ᴡᴀɪᴛ...</b>")
-        files, total = await get_bad_files(keyword)
-        await query.message.edit_text(f"<b>Fᴏᴜɴᴅ {total} Fɪʟᴇs ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {keyword} !\n\nFɪʟᴇ ᴅᴇʟᴇᴛɪᴏɴ ᴘʀᴏᴄᴇss ᴡɪʟʟ sᴛᴀʀᴛ ɪɴ 5 sᴇᴄᴏɴᴅs!</b>")
-        await asyncio.sleep(5)
-        deleted = 0
-        async with lock:
-            try:
-                for file in files:
-                    file_ids = file.file_id
-                    file_name = file.file_name
-                    result = await Media.collection.delete_one({
-                        '_id': file_ids,
-                    })
-                    if result.deleted_count:
-                        logger.info(f'Fɪʟᴇ Fᴏᴜɴᴅ ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {keyword}! Sᴜᴄᴄᴇssғᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ {file_name} ғʀᴏᴍ ᴅᴀᴛᴀʙᴀsᴇ.')
-                    deleted += 1
-                    if deleted % 20 == 0:
-                        await query.message.edit_text(f"<b>Pʀᴏᴄᴇss sᴛᴀʀᴛᴇᴅ ғᴏʀ ᴅᴇʟᴇᴛɪɴɢ ғɪʟᴇs ғʀᴏᴍ DB. Sᴜᴄᴄᴇssғᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ {str(deleted)} ғɪʟᴇs ғʀᴏᴍ DB ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {keyword} !\n\nPʟᴇᴀsᴇ ᴡᴀɪᴛ...</b>")
-            except Exception as e:
-                logger.exception(e)
-                await query.message.edit_text(f'Eʀʀᴏʀ: {e}')
-            else:
-                await query.message.edit_text(f"<b>Pʀᴏᴄᴇss Cᴏᴍᴘʟᴇᴛᴇᴅ ғᴏʀ ғɪʟᴇ ᴅᴇʟᴇᴛɪᴏɴ !\n\nSᴜᴄᴄᴇssғᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ {str(deleted)} ғɪʟᴇs ғʀᴏᴍ DB ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {keyword}.</b>")
-
+        return        
+    
     elif query.data == "pages":
         await query.answer()
 
