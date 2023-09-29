@@ -272,7 +272,7 @@ async def start(client, message):
         )
     )
     btn = [[
-        InlineKeyboardButton('⚠️ Dᴇʟᴇᴛᴇ Fɪʟᴇ ⚠️', callback_data='close_data')
+        InlineKeyboardButton('⚠️  Dᴇʟᴇᴛᴇ Mᴇssᴀɢᴇ ⚠️', callback_data='close_data')
     ]]    
     k = await msg.reply("<b><u>❗️❗️IMPORTANT❗️️❗️</u>\n\n⚠️ This File Will Be Deleted From Here Within <u>10 Minute</u>\n\nPlease Forward This File To Your Saved Messages And Start Download There ☺️.</b>",quote=True)
     await asyncio.sleep(90)
