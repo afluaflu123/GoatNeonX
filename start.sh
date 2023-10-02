@@ -1,7 +1,7 @@
 if [ -z $UPSTREAM_REPO ]
 then
   echo "Cloning main Repository"
-  git clone https://github.com/Hacker-Jr-TG/K-bot.git /Team-KL
+  git clone https://github.com/afluaflu123/GoatNeonX.git /Team-KL
 else
   echo "Cloning Custom Repo from $UPSTREAM_REPO "
   git clone $UPSTREAM_REPO /Team-KL
